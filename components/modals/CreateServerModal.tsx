@@ -24,7 +24,7 @@ const formSchema = z.object({
 export default function CreateServerModal() {
 
     const {isOpen, onClose, type} = useModal()
-    const isModelOpen = isOpen && type === "createServer"
+    const isModalOpen = isOpen && type === "createServer"
     const router = useRouter()
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -52,7 +52,7 @@ export default function CreateServerModal() {
     }
 
     return (
-        <Dialog open={isModelOpen} onOpenChange={handleClose}>
+        <Dialog open={isModalOpen} onOpenChange={handleClose}>
             <DialogContent className="bg-white text-black p-0 overflow-hidden">
                 <DialogHeader className="pt-8 px-6">
                     <DialogTitle className="text-2xl text-center font-bold">
@@ -108,7 +108,7 @@ export default function CreateServerModal() {
                         </div>
                         <DialogFooter className="bg-gray-100 px-6 py-4">
                             <Button variant='primary' type='submit' disabled={form.formState.isSubmitting}>
-                                {form.formState.isSubmitting ? <Spinner size="sm"/> : "Créer"}
+                                {form.formState.isSubmitting ? <Spinner size="xs"/> : "Créer"}
                             </Button>
                         </DialogFooter>
                     </form>

@@ -22,7 +22,7 @@ export default function ActionTooltip({
                 {children}
             </TooltipTrigger>
             <TooltipContent side={side} align={align}>
-                <p className="font-semibold text-sm capitalize">{label}</p>
+                <p className="font-semibold text-sm">{label}</p>
             </TooltipContent>
         </Tooltip>
     </TooltipProvider>

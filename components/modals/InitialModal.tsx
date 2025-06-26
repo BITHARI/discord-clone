@@ -107,7 +107,7 @@ export default function InitialModal() {
                         </div>
                         <DialogFooter className="bg-gray-100 px-6 py-4">
                             <Button variant='primary' type='submit' disabled={form.formState.isSubmitting}>
-                                {form.formState.isSubmitting ? <Spinner size="sm"/> : "Créer"}
+                                {form.formState.isSubmitting ? <Spinner size="xs"/> : "Créer"}
                             </Button>
                         </DialogFooter>
                     </form>

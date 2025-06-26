@@ -13,7 +13,7 @@ import Spinner from "../ui/spinner"
 export default function InviteModal() {
 
     const { isOpen, onClose, onOpen, type, data: { server } } = useModal()
-    const isModelOpen = isOpen && type === "invite"
+    const isModalOpen = isOpen && type === "invite"
     const origin = useOrigin()
     const inviteUrl = `${origin}/invite/${server?.inviteCode}`
     const [copied, setCopied] = useState(false)
@@ -40,7 +40,7 @@ export default function InviteModal() {
     }
 
     return (
-        <Dialog open={isModelOpen} onOpenChange={onClose}>
+        <Dialog open={isModalOpen} onOpenChange={onClose}>
             <DialogContent className="bg-white text-black p-0 overflow-hidden">
                 <DialogHeader className="pt-8 px-6">
                     <DialogTitle className="text-2xl text-center font-bold">
