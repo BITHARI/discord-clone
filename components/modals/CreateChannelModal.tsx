@@ -29,7 +29,7 @@ export default function CreateChannelModal() {
     const {isOpen, onClose, type, data : {defaultChannelType}} = useModal()
     const isModalOpen = isOpen && type === "createChannel"
     const router = useRouter()
-    const {serverId} = useParams()
+    const params= useParams()
 
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -40,14 +40,14 @@ export default function CreateChannelModal() {
     })
 
     const onSubmit = async (values : z.infer<typeof formSchema>) => {
-        if (!serverId) {
+        if (!params?.serverId) {
             return
         }
         try {
             const url = qs.stringifyUrl({
                 url: "/api/channels",
                 query: {
-                    serverId: serverId
+                    serverId: params.serverId
                 }
             })
             await axios.post(url, values)

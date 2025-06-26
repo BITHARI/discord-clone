@@ -2,7 +2,7 @@
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "../ui/dialog"
 import { useModal } from "@/hooks/use-modal-store"
 import qs from "query-string"
-import { Check, Copy, Gavel, Loader2, MoreVertical, RefreshCcw, Shield, ShieldAlert, ShieldCheck, ShieldQuestion } from "lucide-react"
+import { Check, Copy, Gavel, Loader2, MoreVertical, ShieldAlert, ShieldCheck, ShieldQuestion } from "lucide-react"
 import { ServerWithMembersWithProfiles } from "@/types"
 import { ScrollArea } from "../ui/scroll-area"
 import UserAvatar from "../user-avatar"

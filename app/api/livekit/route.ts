@@ -39,7 +39,6 @@ export async function GET(req: NextRequest) {
             canPublishData: true
         });
 
-        // Handle both sync and async toJwt() methods
         const token = await at.toJwt();
 
         return NextResponse.json({ token: token })
