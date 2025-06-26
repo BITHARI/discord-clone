@@ -7,6 +7,7 @@ import { Edit, FileIcon, ShieldAlert, ShieldCheck, Trash } from "lucide-react"
 import { useState } from "react"
 import Image from "next/image"
 import { cn } from "@/lib/utils"
+import { useParams, useRouter } from "next/navigation"
 
 interface ChatItemProps {
     id: string,
@@ -48,17 +49,29 @@ export default function ChatItem({
     const canDeleteMessage = (isModerator || isOwner) && !deleted
     const canEditMessage = isOwner && !deleted && !isUpdated
 
+    const router = useRouter()
+    const params = useParams()
+
+    const handleNavigateToMember = () => {
+        if (member.id === currentMember.id) return
+        router.push(`/servers/${params?.serverId}/conversations/${member.id}`)
+    }
+
     return (
 
         <div className="relative group flex items-center hover:bg-black/5 p-4 transition w-full">
             <div className="group flex items-start gap-x-2 w-full">
-                <div className="cursor-pointer hover:drop-shadow-md transition">
+                <div
+                    onClick={handleNavigateToMember}
+                    className="cursor-pointer hover:drop-shadow-md transition">
                     <UserAvatar src={member.profile.imageUrl} />
                 </div>
                 <div className="flex flex-col w-full">
                     <div className="flex items-center gap-x-2">
                         <div className="flex items-center">
-                            <p className="font-semibold text-sm hover:underline cursor-pointer">
+                            <p
+                                onClick={handleNavigateToMember}
+                                className="font-semibold text-sm hover:underline cursor-pointer">
                                 {member.profile.name}
                             </p>
                             <ActionTooltip label={member.role.toLowerCase()}>

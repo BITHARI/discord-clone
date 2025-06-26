@@ -1,6 +1,6 @@
 import { currentProfile } from "@/lib/current-profile"
 import { db } from "@/lib/db"
-import { Message } from "@prisma/client"
+import { DirectMessage } from "@prisma/client"
 import { NextResponse } from "next/server"
 
 const MESSAGES_BATCH = 15
@@ -13,21 +13,21 @@ export async function GET(req: Request) {
         }
 
         const { searchParams } = new URL(req.url)
-        const channelId = searchParams.get("channelId")
-        if (!channelId) {
-            return new NextResponse("Channel ID Missing", { status: 400 })
+        const conversationId = searchParams.get("conversationId")
+        if (!conversationId) {
+            return new NextResponse("Conversation ID Missing", { status: 400 })
         }
-        let messages: Message[] = []
+        let messages: DirectMessage[] = []
         const cursor = searchParams.get("cursor")
         if (cursor) {
-            messages = await db.message.findMany({
+            messages = await db.directMessage.findMany({
                 take: MESSAGES_BATCH,
                 skip: 1,
                 cursor : {
                     id : cursor
                 },
                 where: {
-                    channelId,
+                    conversationId,
                 },
                 orderBy: {
                     createdAt: "desc"
@@ -41,10 +41,10 @@ export async function GET(req: Request) {
                 }
             })
         } else {
-            messages = await db.message.findMany({
+            messages = await db.directMessage.findMany({
                 take: MESSAGES_BATCH,
                 where: {
-                    channelId,
+                    conversationId,
                 },
                 orderBy: {
                     createdAt: "desc"
@@ -67,7 +67,7 @@ export async function GET(req: Request) {
             nextCursor
         })
     } catch (error) {
-        console.log("[MESSAGES_GET]", error)
+        console.log("[DIRECT_MESSAGES_GET]", error)
         return new NextResponse("Internal Server Error", { status: 500 })
     }
 }
