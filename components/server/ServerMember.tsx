@@ -32,7 +32,7 @@ export default function ServerMember({ member, server }: ServerMemberProps) {
             <UserAvatar src={member.profile.imageUrl} className="h-8 w-8 md:h-8 md:w-8" />
             <p className={cn(
                 "text-start w-full font-semibold line-clamp-1 text-md text-zinc-500 dark:text-zinc-300 group-hover:text-zinc-600 dark:group-hover:text-zinc-300 transition",
-                params.memberId === member.id && "text-primary dark:text-zinc-200 dark:group-hover:text-white"
+                params?.memberId === member.id && "text-primary dark:text-zinc-200 dark:group-hover:text-white"
             )}
             >
                 {member.profile.name}
