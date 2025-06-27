@@ -31,8 +31,8 @@ export default function ChatVideoButton({ }: ChatVideoButtonProps) {
         <ActionTooltip side="bottom" label={isVideo ? "Terminer l'appel" : "Commencer un appel video"}>
             <button onClick={toggleVideo} className="hover:opacity-75 transition mr-4">
                 {isVideo
-                    ? <Video className="w-6 h-6 text-zinc-500 dark:text-zinc-400" />
-                    : <VideoOff className="w-6 h-6 text-zinc-500 dark:text-zinc-400" />
+                    ? <VideoOff className="w-6 h-6 text-zinc-500 dark:text-zinc-400" />
+                    : <Video className="w-6 h-6 text-zinc-500 dark:text-zinc-400" />
                 }
             </button>
         </ActionTooltip>
