@@ -18,7 +18,7 @@ const ioHandler = (req: NextApiRequest, res : NextApiResponseServerIo) => {
             path,
             addTrailingSlash: false
         })
-        // @ts-ignore
+        // @ts-expect-error
         res.socket.server.io = io
     }
     res.end()
