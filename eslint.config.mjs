@@ -43,6 +43,7 @@ const eslintConfig = [
             '@typescript-eslint/no-this-alias': 'off',
             '@typescript-eslint/no-unsafe-function-types': 'off',
             '@typescript-eslint/no-non-null-asserted-optional-chain': 'off',
+            '@typescript-eslint/ban-ts-comment': 'off',
             
         },
     },
